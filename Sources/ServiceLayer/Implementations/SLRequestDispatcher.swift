@@ -9,22 +9,24 @@ import Foundation
 
 final public class SLRequestDispatcher: RequestDispatcherProtocol {
     public var environment: SLEnvironmentProtocol
-    private var networkSession: NetworkSessionProtocol
+    private var networkSession: NetworkSessionProtocol?
     
-    required public init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol) {
+    required public init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol?) {
         self.environment = env
-        self.networkSession = networkSession
+        if networkSession == nil {
+            self.networkSession = SLNetworkSession()
+        }
     }
     
     public func execute(request: SLRequest, completion: @escaping ((SLResponseProtocol?) -> Void)) -> URLSessionTask? {
         var task: URLSessionTask?
-        guard let req = request.urlRequest(environment: self.environment) else {
+        guard let req = request.urlRequest(environment: self.environment), let session = self.networkSession else {
             return nil
         }
         
         switch request.trafficType {
         case .data:
-            task = networkSession.dataTaskWithRequest(req, completion: { data, response, error in
+            task = session.dataTaskWithRequest(req, completion: { data, response, error in
                 guard let responseData = data, let result = response?.handleWithData(responseData) else {
                     return
                 }

@@ -51,7 +51,7 @@ public protocol SLOperationProtocol {
 /// dispatch request with the specified environment and network session.
 public protocol RequestDispatcherProtocol {
     var environment: SLEnvironmentProtocol { get }
-    init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol)
+    init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol?)
     
     func execute(request: SLRequest, completion: @escaping ((SLResponseProtocol?) -> Void)) -> URLSessionTask?
 }
