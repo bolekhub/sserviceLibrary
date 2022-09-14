@@ -103,3 +103,6 @@ Basically the idea is separate concerns about request, who make it and who perfo
 4 - Execute the operation on the dispatcher.
 
 Thats all. Thank you so much, this is a first try of course theres a lot of improvements. 
+
+## Install
+In Xcode : File/Add Packages .In the dialog showing available packages put this repo url in the **upper right corner** and type enter
