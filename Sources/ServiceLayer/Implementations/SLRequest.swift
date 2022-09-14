@@ -18,7 +18,7 @@ public struct SLRequest {
     var path: String? = nil
 }
 
-extension SLRequest {
+public extension SLRequest {
         /// This is the basic unit of a request. Contains al elements that dispatcher will throw to network session. Its added to the SLOperation before doing request.
         /// - Parameters:
         ///   - requestType: Specify the type of reques wich can be body or standard qquery items. Body can be     formdata, urlencoded, json so far. body option have asociated types wich guide you on how request should be made

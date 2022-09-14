@@ -39,16 +39,6 @@ enum SLSessionType {
     case upload
 }
 
-enum SLHTTPMethod: String {
-    case GET
-    case POST
-    case PUT
-    case PATCH
-    case DELETE
-    case OPTIONS
-}
-
-
 enum APIEnv: SLEnvironmentProtocol {
     case dev
     case pro
@@ -81,7 +71,18 @@ enum APIEnv: SLEnvironmentProtocol {
     }
 }
 
-    // in case parameters does not go in the url itself as query strgin
+//MARK: - public types
+
+public enum SLHTTPMethod: String {
+    case GET
+    case POST
+    case PUT
+    case PATCH
+    case DELETE
+    case OPTIONS
+}
+
+
 public enum SLParameterType {
     case body(SLBodyParameterEncodingType)
     case requestURL([String: String])
@@ -104,7 +105,7 @@ public enum SLParameterType {
     }
 }
 
-struct ServiceResponse: SLResponseProtocol {
+public struct ServiceResponse: SLResponseProtocol {
     var data: Data
     var headers: [AnyHashable : Any]?
     var code: Int
