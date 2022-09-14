@@ -11,7 +11,11 @@ final public class SLRequestDispatcher: RequestDispatcherProtocol {
     public var environment: SLEnvironmentProtocol
     private var networkSession: NetworkSessionProtocol?
     
-    required public init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol?) {
+        /// Initializer for Dispatcher
+        /// - Parameters:
+        ///   - env: type conforming SLEnvironmentProtocol
+        ///   - networkSession: Pass an instance conforming NetworkSessionProtocol. By default we provide a session object wich have a Queue allowing max 3 concurrent operations.
+    required public init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol? = nil) {
         self.environment = env
         if networkSession == nil {
             self.networkSession = SLNetworkSession()
