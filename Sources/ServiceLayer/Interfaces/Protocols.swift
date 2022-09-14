@@ -17,11 +17,11 @@ public protocol SLResponseProtocol {
 }
 
 extension SLResponseProtocol {
-    var body: String? {
+    public var body: String? {
         String(data: data, encoding: .utf8)
     }
     
-    var bodyRepresentation: NSDictionary? {
+    public var bodyRepresentation: NSDictionary? {
         let json = try? JSONSerialization.jsonObject(with: self.data, options: .fragmentsAllowed)
         return json as? NSDictionary
     }

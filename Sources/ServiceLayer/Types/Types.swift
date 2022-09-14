@@ -106,7 +106,7 @@ public enum SLParameterType {
 }
 
 public struct ServiceResponse: SLResponseProtocol {
-    var data: Data
-    var headers: [AnyHashable : Any]?
-    var code: Int
+    public var data: Data
+    public var headers: [AnyHashable : Any]?
+    public var code: Int
 }
