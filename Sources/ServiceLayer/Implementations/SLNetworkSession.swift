@@ -17,8 +17,9 @@ final class SLNetworkSession: NSObject {
     override convenience init() {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForResource = 20
-        configuration.waitsForConnectivity = true
-        
+        if #available(iOS 11.0, *) {
+            configuration.waitsForConnectivity = true
+        }
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 3
         queue.qualityOfService = .userInitiated
