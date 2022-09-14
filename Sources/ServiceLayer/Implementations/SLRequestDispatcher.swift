@@ -7,16 +7,16 @@
 
 import Foundation
 
-final class SLRequestDispatcher: RequestDispatcherProtocol {
-     var environment: SLEnvironmentProtocol
-        private var networkSession: NetworkSessionProtocol
+final public class SLRequestDispatcher: RequestDispatcherProtocol {
+    public var environment: SLEnvironmentProtocol
+    private var networkSession: NetworkSessionProtocol
     
-    required init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol) {
+    required public init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol) {
         self.environment = env
         self.networkSession = networkSession
     }
     
-    internal func execute(request: SLRequest, completion: @escaping ((SLResponseProtocol?) -> Void)) -> URLSessionTask? {
+    public func execute(request: SLRequest, completion: @escaping ((SLResponseProtocol?) -> Void)) -> URLSessionTask? {
         var task: URLSessionTask?
         guard let req = request.urlRequest(environment: self.environment) else {
             return nil

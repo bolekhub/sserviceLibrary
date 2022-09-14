@@ -8,26 +8,26 @@
 import Foundation
 
     /// This class is the glue between request and dispatcher. Take the SLRequest and forward to Dispatcher for execution
-final class SLOperation: SLOperationProtocol {
+final public class SLOperation: SLOperationProtocol {
     
     /// Describe what will be returned by executing request.
-    typealias Output = SLResponseProtocol?
+    public typealias Output = SLResponseProtocol?
     
     /// session task
     private var task: URLSessionTask?
     
     /// contain all parameters needed by request itself
-    var request: SLRequest
+    public var request: SLRequest
     
     init(_ request: SLRequest) {
         self.request = request
     }
     
-    func cancel() {
+    public func cancel() {
         task?.cancel()
     }
 
-    func execute(in requestDispatcher: RequestDispatcherProtocol, completion: @escaping (SLResponseProtocol?) -> Void) {
+    public func execute(in requestDispatcher: RequestDispatcherProtocol, completion: @escaping (SLResponseProtocol?) -> Void) {
         let baseUrl = requestDispatcher.environment.baseURL
         self.request.setBaseURL(baseUrl)
         task = requestDispatcher.execute(request: request, completion: { result in

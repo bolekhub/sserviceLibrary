@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SLRequest {
+public struct SLRequest {
     private let jsonEncoder = JSONEncoder()
     private var requestType: SLParameterType
     private var method: SLHTTPMethod

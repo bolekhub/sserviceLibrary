@@ -7,8 +7,8 @@
 
 import Foundation
 
-typealias SLProgresHandler = (Float) -> Void
-typealias SLRequestParams = [String: Any?]
+public typealias SLProgresHandler = (Float) -> Void
+public typealias SLRequestParams = [String: Any?]
 
 enum SLAPIError: Error {
     case badURL

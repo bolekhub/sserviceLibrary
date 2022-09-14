@@ -8,7 +8,7 @@
 import Foundation
 
 /// If request was successfully the service will return a type conforming this protocol
-protocol SLResponseProtocol {
+public protocol SLResponseProtocol {
     var data: Data { get }
     var code: Int { get }
     var headers: [AnyHashable: Any]? { get }
@@ -28,14 +28,14 @@ extension SLResponseProtocol {
 }
 
 /// Define environment. Switch easyly between environments applying the most critical parameters.
-protocol SLEnvironmentProtocol {
+public protocol SLEnvironmentProtocol {
     var headers: [String: String] { get }
     var baseURL: String { get }
     var timeout: TimeInterval { get }
 }
 
 /// Types conforming to this protocols are operations wich execute, cancel session task
-protocol SLOperationProtocol {
+public protocol SLOperationProtocol {
     associatedtype Output
     
     var request: SLRequest { get }
@@ -49,7 +49,7 @@ protocol SLOperationProtocol {
 }
 
 /// dispatch request with the specified environment and network session.
-protocol RequestDispatcherProtocol {
+public protocol RequestDispatcherProtocol {
     var environment: SLEnvironmentProtocol { get }
     init(env: SLEnvironmentProtocol, networkSession: NetworkSessionProtocol)
     
@@ -58,7 +58,7 @@ protocol RequestDispatcherProtocol {
 
 
 /// define methods used by urlsession responsible creating data/download task, track progres. etc.
-protocol NetworkSessionProtocol {
+public protocol NetworkSessionProtocol {
     func dataTaskWithRequest(_ request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask?
     
     func downloadTaskWithRequest(_ request: URLRequest, progress: SLProgresHandler?,  completion: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask?
