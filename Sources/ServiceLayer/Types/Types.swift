@@ -82,11 +82,11 @@ enum APIEnv: SLEnvironmentProtocol {
 }
 
     // in case parameters does not go in the url itself as query strgin
-enum SLParameterType {
+public enum SLParameterType {
     case body(SLBodyParameterEncodingType)
     case requestURL([String: String])
     
-    enum SLBodyParameterEncodingType {
+    public enum SLBodyParameterEncodingType {
         case formdata([String: Any])
         case urlencoded([String: String])
         case json(Encodable)

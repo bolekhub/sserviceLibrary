@@ -19,7 +19,7 @@ final public class SLOperation: SLOperationProtocol {
     /// contain all parameters needed by request itself
     public var request: SLRequest
     
-    init(_ request: SLRequest) {
+    public init(_ request: SLRequest) {
         self.request = request
     }
     
