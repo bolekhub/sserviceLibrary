@@ -83,8 +83,7 @@ Code make look like this.
 ```swift
         let person = Employee(name: "Jhon", salary: "430000", age: "45")
         
-        let dispatcher = SLRequestDispatcher(env: APIEnv.dev, 
-                                             networkSession: SLNetworkSession()) //1
+        let dispatcher = SLRequestDispatcher(env: APIEnv.dev) //1
         
         let personRequest = SLRequest(requestType: .body(.json(person)),
                                                          serviceName: "create") //2
@@ -97,7 +96,7 @@ Code make look like this.
 ```
 
 Basically the idea is separate concerns about request, who make it and who perform it. 
-1 - Dispatcher wrap network session with the environment. 
+1 - Dispatcher wrap network session with the environment. You can pass custom SLNetworkSessionProtocol type if you want special behaviour.
 2 - Create the request 
 3 - Pass the request to the operation
 4 - Execute the operation on the dispatcher.
